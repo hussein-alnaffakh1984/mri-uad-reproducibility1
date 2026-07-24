@@ -1,0 +1,8 @@
+{
+  "targets": [
+    0.9,
+    0.95,
+    0.99
+  ],
+  "note": "Thresholds are quantiles of the normal-reference score distribution only; abnormal slices are never used to set an operating point. Volume sensitivity flags a volume when any of its slices exceeds the threshold."
+}
