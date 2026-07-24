@@ -1,0 +1,16 @@
+{
+  "frame": 320,
+  "axflair_median_split_px2": 3631.0,
+  "split_pct_of_slice": 3.546,
+  "small_slices": 77,
+  "small_volumes": 19,
+  "large_slices": 77,
+  "large_volumes": 9,
+  "volumes_in_both": 8,
+  "volumes_union": 20,
+  "normal_test_volumes": 26,
+  "median_area_axt1post": 4179.0,
+  "median_area_axflair_small": 483.0,
+  "median_area_axflair_large": 9180.0,
+  "ratio_small_over_axt1post": 0.116
+}

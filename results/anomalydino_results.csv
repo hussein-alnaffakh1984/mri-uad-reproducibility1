@@ -1,0 +1,4 @@
+sequence,anomalydino_auroc,anomalydino_sd,ours_auroc,delta,ci_low,ci_high,p,n_vol
+AXT1POST,0.8915,0.0054,0.872,-0.0192,-0.0469,0.0071,0.15,131
+AXFLAIR,0.8568,0.0044,0.8749,0.0153,-0.0061,0.0372,0.171,34
+AXT1,0.8141,0.003,0.8211,0.0117,-0.0153,0.0407,0.383,33
