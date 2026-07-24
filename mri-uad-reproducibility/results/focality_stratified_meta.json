@@ -1,5 +1,0 @@
-{
-  "note": "Post-hoc stratification of AXFLAIR abnormal slices by the largest annotated lesion box area (fastMRI+), median split. AXFLAIR carries no contrast agent, so a raised operator contrast in the small-lesion stratum would indicate that focality alone, without enhancement, is sufficient. Exploratory: not pre-specified, reduced sample size per stratum, and 2D box area is a coarse proxy for lesion focality.",
-  "B": 2000,
-  "seed": 0
-}

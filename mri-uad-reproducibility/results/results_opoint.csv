@@ -1,7 +1,0 @@
-sequence,level,slice_sens,slice_spec,fp_per_normal_volume,volume_auroc_max
-AXT1POST,image,0.2209,0.9492,0.107,0.9413
-AXT1POST,patch,0.5233,0.9492,0.107,0.9818
-AXFLAIR,image,0.2727,0.9494,0.143,0.7643
-AXFLAIR,patch,0.5519,0.9494,0.143,0.8429
-AXT1,image,0.3451,0.9459,0.222,0.7815
-AXT1,patch,0.4014,0.9459,0.222,0.8037
