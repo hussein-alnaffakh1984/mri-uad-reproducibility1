@@ -94,7 +94,7 @@ MIT.
 | `scripts/07_anomalydino.py` | AnomalyDINO over five seeds, and the paired tests of Tables 7 and 8 |
 | `scripts/08_seed_averaged_analysis.py` | Tables 3 and 4 under the seed-averaged estimand |
 | `scripts/09_make_figures_3_4.py` | Figures 3 and 4 |
-| `configs/analysis_config.json` | every scoring, bootstrap and multiplicity setting |
+| `analysis_config.json` | every scoring, bootstrap and multiplicity setting |
 | `results/predictions_*.csv` | per-seed predictions for every configuration and comparator |
 | `results/comparator_auroc_by_seed.csv` | seed-level AUROC of the four comparators |
 | `results/predictions_dpmm_sens_summary.csv` | the 3x3 sensitivity grid |
