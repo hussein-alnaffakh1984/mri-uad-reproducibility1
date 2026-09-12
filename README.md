@@ -84,3 +84,21 @@ cohort; it was withdrawn during revision and is not part of the published analys
 ## License
 
 MIT.
+## Comparators and sensitivity analyses (second revision)
+
+| Path | Contents |
+|---|---|
+| `scripts/04_padim.py` | PaDiM baseline, five seeds, four operators |
+| `scripts/05_patchcore.py` | PatchCore with greedy coreset at 1% and 10% |
+| `scripts/06_dpmm_sensitivity.py` | Dirichlet-process mixture, 3x3 sensitivity grid |
+| `scripts/07_anomalydino.py` | AnomalyDINO over five seeds, and the paired tests of Tables 7 and 8 |
+| `scripts/08_seed_averaged_analysis.py` | Tables 3 and 4 under the seed-averaged estimand |
+| `scripts/09_make_figures_3_4.py` | Figures 3 and 4 |
+| `configs/analysis_config.json` | every scoring, bootstrap and multiplicity setting |
+| `results/predictions_*.csv` | per-seed predictions for every configuration and comparator |
+| `results/comparator_auroc_by_seed.csv` | seed-level AUROC of the four comparators |
+| `results/predictions_dpmm_sens_summary.csv` | the 3x3 sensitivity grid |
+
+All comparators consume the same cached DINOv2 patch descriptors, the same
+reference volumes and the same test split as the main configuration, and are
+scored under the same operators and seeds.
