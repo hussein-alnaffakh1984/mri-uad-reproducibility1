@@ -1,0 +1,273 @@
+{
+  "manuscript": {
+    "paper_id": "20265611",
+    "title": "An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection",
+    "journal": "International Journal of Intelligent Engineering and Systems"
+  },
+  "cohort": {
+    "dataset": "fastMRI brain (multicoil) with fastMRI+ slice-level annotations",
+    "sequences": [
+      "AXT1POST",
+      "AXFLAIR",
+      "AXT1"
+    ],
+    "slice_size": [
+      224,
+      224
+    ],
+    "annotation_frame": [
+      320,
+      320
+    ],
+    "split_level": "volume (no acquisition contributes slices to both reference and test)",
+    "split_file": "data/brain_split.csv",
+    "reference_slices": {
+      "AXT1POST": 400,
+      "AXFLAIR": 159,
+      "AXT1": 149
+    },
+    "normal_test_slices": {
+      "AXT1POST": 256,
+      "AXFLAIR": 79,
+      "AXT1": 74
+    },
+    "abnormal_test_slices": {
+      "AXT1POST": 86,
+      "AXFLAIR": 154,
+      "AXT1": 142
+    },
+    "test_volumes_total": {
+      "AXT1POST": 131,
+      "AXFLAIR": 34,
+      "AXT1": 33
+    },
+    "volumes_in_both_test_columns": {
+      "AXT1POST": 3,
+      "AXFLAIR": 12,
+      "AXT1": 7
+    },
+    "volumes_contributing_normal_test_slices": {
+      "AXT1POST": 121,
+      "AXFLAIR": 14,
+      "AXT1": 18
+    }
+  },
+  "backbones": {
+    "dinov2": {
+      "name": "DINOv2 ViT-B/14",
+      "descriptor_dim": 768,
+      "patch_grid": [
+        16,
+        16
+      ],
+      "patches_per_slice": 256,
+      "fine_tuned": false
+    },
+    "wideresnet": {
+      "name": "WideResNet-50-2",
+      "descriptor_dim": 1536,
+      "level": "image only",
+      "fine_tuned": false
+    }
+  },
+  "scoring": {
+    "image_level": {
+      "rule": "kNN",
+      "k": 5,
+      "aggregation": "mean distance to the k nearest reference descriptors",
+      "bank": "all reference descriptors",
+      "deterministic": true,
+      "seed_field": -1
+    },
+    "patch_level": {
+      "rule": "nearest neighbour",
+      "k": 1,
+      "aggregation": "distance to the single nearest bank element, then an operator over patches",
+      "bank_size": 20000,
+      "bank_source_sizes": {
+        "AXT1POST": 102400,
+        "AXFLAIR": 40704,
+        "AXT1": 38144
+      },
+      "subsampling": "uniform random, not a greedy coreset",
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "operators": {
+      "max": "maximum patch distance",
+      "top1": "mean of patches above the 99th percentile",
+      "top5": "mean of patches above the 95th percentile (primary, declared a priori)",
+      "mean": "mean over all patches"
+    },
+    "distance": "Euclidean"
+  },
+  "operating_points": {
+    "quantiles_of_normal_reference_scores": [
+      0.9,
+      0.95,
+      0.99
+    ],
+    "primary": 0.95,
+    "abnormal_slices_used_to_set_thresholds": false,
+    "volume_score": "maximum slice score within the volume"
+  },
+  "inference": {
+    "estimand": "mean over seeds of the paired difference; equals (five-seed mean) - (image), which is deterministic",
+    "bootstrap": {
+      "type": "patient-level cluster bootstrap, whole volumes resampled with replacement",
+      "B": 2000,
+      "seed": 0,
+      "seed_average_taken": "inside every replicate"
+    },
+    "p_value": "two-sided, twice the smaller tail mass, floored at 1/B = 0.0005",
+    "multiplicity": {
+      "procedure": "Holm-Bonferroni, applied within each family separately",
+      "families": [
+        {
+          "name": "primary",
+          "n": 3,
+          "confirmatory": true,
+          "description": "patch versus image under top-5%, one per sequence"
+        },
+        {
+          "name": "interaction",
+          "n": 3,
+          "confirmatory": true,
+          "description": "pairwise differences of operator contrast between sequences"
+        },
+        {
+          "name": "scoring rule",
+          "n": 3,
+          "confirmatory": false,
+          "description": "LOF versus kNN, Section 4.5"
+        },
+        {
+          "name": "AnomalyDINO",
+          "n": 3,
+          "confirmatory": false
+        },
+        {
+          "name": "DPMM",
+          "n": 3,
+          "confirmatory": false
+        },
+        {
+          "name": "conventional normal models",
+          "n": 9,
+          "confirmatory": false,
+          "description": "Table 9, top-5% comparisons"
+        }
+      ],
+      "exploratory_grid": {
+        "n": 12,
+        "description": "all operator-by-sequence patch-versus-image tests"
+      }
+    },
+    "single_seed_exceptions": [
+      "the Dirichlet-process mixture comparator, three seeds, because fitting is costly",
+      "the stratified analysis of Section 4.2.1, computed on the single-seed prediction set to which per-slice lesion areas are matched"
+    ]
+  },
+  "comparators": {
+    "anomalydino": {
+      "script": "scripts/07_anomalydino.py",
+      "tokens": "L2-normalized patch tokens",
+      "distance": "cosine",
+      "bank_size": 20000,
+      "operator": "mean of the top 1% of patch distances",
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "note": "faithful re-implementation, not the official code"
+    },
+    "dpmm": {
+      "script": "scripts/06_dpmm_sensitivity.py",
+      "model": "variational Dirichlet-process Gaussian mixture",
+      "covariance_type": "diag",
+      "weight_concentration_prior_type": "dirichlet_process",
+      "truncation": 50,
+      "max_iter": 200,
+      "pca_dim": 128,
+      "fit_samples": 20000,
+      "component_retained_if_weight_above": 0.01,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "score": "Mahalanobis distance to the nearest retained component, aggregated with top-5%",
+      "sensitivity_grid": {
+        "pca_dim": [
+          64,
+          128,
+          256
+        ],
+        "truncation": [
+          20,
+          50,
+          100
+        ]
+      },
+      "note": "remaining settings are scikit-learn defaults for BayesianGaussianMixture"
+    },
+    "padim": {
+      "script": "scripts/04_padim.py",
+      "channels_selected": 100,
+      "channels_total": 768,
+      "shrinkage": 0.001,
+      "model": "one Gaussian per patch position",
+      "distance": "Mahalanobis",
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "patchcore": {
+      "script": "scripts/05_patchcore.py",
+      "bank_selection": "greedy coreset",
+      "coreset_fractions": [
+        0.01,
+        0.1
+      ],
+      "bank_sizes": {
+        "0.01": {
+          "AXT1POST": 1024,
+          "AXFLAIR": 407,
+          "AXT1": 381
+        },
+        "0.10": {
+          "AXT1POST": 10240,
+          "AXFLAIR": 4070,
+          "AXT1": 3814
+        }
+      },
+      "distance": "Euclidean",
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "environment": {
+    "python": "3.12",
+    "numpy": "2.0.2",
+    "scikit_learn": "1.6.1",
+    "scipy": "1.16",
+    "note": "the exact package versions of the original run are recorded in the released environment file"
+  }
+}
