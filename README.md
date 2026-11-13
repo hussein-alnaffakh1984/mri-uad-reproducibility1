@@ -87,12 +87,12 @@ cohort; it was withdrawn during revision and is not part of the published analys
 
 If you use this code or its results, please cite the published paper:
 
-> Radhi, A.D., Hussein, M.H., Al-Sabaawi, A.M.A., Al-Naffakh, H.A.H., & Ghazali, R. (2026). An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection. *International Journal of Intelligent Engineering and Systems*, 19(11), 809–832. https://doi.org/10.22266/ijies2026.1130.42
+> Radhi, A.D., Hussein, M.H., Al-Naffakh, H.A.H., Al-Sabaawi, A.M.A., & Ghazali, R. (2026). An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection. *International Journal of Intelligent Engineering and Systems*, 19(11), 809–832. https://doi.org/10.22266/ijies2026.1130.42
 
 ```bibtex
 @article{Radhi2026MRIUAD,
   title   = {An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection},
-  author  = {Radhi, Ahmed Dheyaa and Hussein, Mohsin Hasan and Al-Sabaawi, Ali Mohsin Ahmed and Al-Naffakh, Hussein Ali Hussein and Ghazali, Rozaida},
+  author  = {Radhi, Ahmed Dheyaa and Hussein, Mohsin Hasan and Al-Naffakh, Hussein Ali Hussein and Al-Sabaawi, Ali Mohsin Ahmed and Ghazali, Rozaida},
   journal = {International Journal of Intelligent Engineering and Systems},
   year    = {2026},
   volume  = {19},
