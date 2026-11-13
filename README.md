@@ -1,5 +1,7 @@
 # Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24208772.svg)](https://doi.org/10.5281/zenodo.24208772)
+
 Reproducibility package for the manuscript *An Empirical Analysis of Locally Concentrated
 Patch Aggregation in Training-Free Brain MRI Anomaly Detection*, International Journal of
 Intelligent Engineering and Systems.

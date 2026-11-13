@@ -15,6 +15,10 @@ authors:
   - family-names: "Ghazali"
     given-names: "Rozaida"
 repository-code: "https://github.com/hussein-alnaffakh1984/mri-uad-reproducibility1"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24208772"
+    description: "Zenodo archive of this software"
 preferred-citation:
   type: article
   title: "An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection"
