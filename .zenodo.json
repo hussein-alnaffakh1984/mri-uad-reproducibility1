@@ -1,0 +1,32 @@
+{
+  "title": "Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection (reproducibility package)",
+  "upload_type": "software",
+  "access_right": "open",
+  "description": "<p>Source code and reproducibility materials accompanying the article: An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection. <em>International Journal of Intelligent Engineering and Systems</em>, 2026. https://doi.org/10.22266/ijies2026.1130.42</p><p>If you use this software, please cite the article.</p>",
+  "creators": [
+    {
+      "name": "Radhi, Ahmed Dheyaa"
+    },
+    {
+      "name": "Hussein, Mohsin Hasan"
+    },
+    {
+      "name": "Al-Sabaawi, Ali Mohsin Ahmed"
+    },
+    {
+      "name": "Al-Naffakh, Hussein Ali Hussein",
+      "affiliation": "University of Alkafeel, Najaf, Iraq",
+      "orcid": "0000-0002-4775-8818"
+    },
+    {
+      "name": "Ghazali, Rozaida"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.22266/ijies2026.1130.42",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ]
+}
