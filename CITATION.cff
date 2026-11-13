@@ -17,7 +17,7 @@ authors:
 repository-code: "https://github.com/hussein-alnaffakh1984/mri-uad-reproducibility1"
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.24208772"
+    value: "10.5281/zenodo.24208902"
     description: "Zenodo archive of this software"
 preferred-citation:
   type: article
