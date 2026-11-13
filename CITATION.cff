@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the published paper below."
+title: "Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection (reproducibility package)"
+type: software
+authors:
+  - family-names: "Radhi"
+    given-names: "Ahmed Dheyaa"
+  - family-names: "Hussein"
+    given-names: "Mohsin Hasan"
+  - family-names: "Al-Sabaawi"
+    given-names: "Ali Mohsin Ahmed"
+  - family-names: "Al-Naffakh"
+    given-names: "Hussein Ali Hussein"
+    orcid: "https://orcid.org/0000-0002-4775-8818"
+  - family-names: "Ghazali"
+    given-names: "Rozaida"
+repository-code: "https://github.com/hussein-alnaffakh1984/mri-uad-reproducibility1"
+preferred-citation:
+  type: article
+  title: "An Empirical Analysis of Locally Concentrated Patch Aggregation in Training-Free Brain MRI Anomaly Detection"
+  authors:
+    - family-names: "Radhi"
+      given-names: "Ahmed Dheyaa"
+    - family-names: "Hussein"
+      given-names: "Mohsin Hasan"
+    - family-names: "Al-Sabaawi"
+      given-names: "Ali Mohsin Ahmed"
+    - family-names: "Al-Naffakh"
+      given-names: "Hussein Ali Hussein"
+      orcid: "https://orcid.org/0000-0002-4775-8818"
+    - family-names: "Ghazali"
+      given-names: "Rozaida"
+  journal: "International Journal of Intelligent Engineering and Systems"
+  year: 2026
+  volume: 19
+  issue: 11
+  start: 809
+  end: 832
+  doi: "10.22266/ijies2026.1130.42"
