@@ -104,7 +104,8 @@ If you use this code or its results, please cite the published paper:
 
 ## License
 
-MIT.
+MIT — see `LICENSE`.
+
 ## Comparators and sensitivity analyses (second revision)
 
 | Path | Contents |
